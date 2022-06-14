@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.junbin.springcloud.DAO.CompanyDao" >
+  <resultMap id="BaseResultMap" type="com.junbin.springcloud.Commom.dto.Company" >
+    <result column="id" property="id" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="manager_id" property="managerId" jdbcType="VARCHAR" />
+    <result column="version" property="version" jdbcType="VARCHAR" />
+    <result column="renewal_date" property="renewalDate" jdbcType="TIMESTAMP" />
+    <result column="expiration_date" property="expirationDate" jdbcType="TIMESTAMP" />
+    <result column="company_area" property="companyArea" jdbcType="VARCHAR" />
+    <result column="business_license_id" property="businessLicenseId" jdbcType="VARCHAR" />
+    <result column="legal_representative" property="legalRepresentative" jdbcType="VARCHAR" />
+    <result column="company_phone" property="companyPhone" jdbcType="VARCHAR" />
+    <result column="mailbox" property="mailbox" jdbcType="VARCHAR" />
+    <result column="company_size" property="companySize" jdbcType="VARCHAR" />
+    <result column="industry" property="industry" jdbcType="VARCHAR" />
+    <result column="audit_state" property="auditState" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="TINYINT" />
+    <result column="balance" property="balance" jdbcType="DOUBLE" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="company_address" property="companyAddress" jdbcType="LONGVARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="LONGVARCHAR" />
+  </resultMap>
+
+
+
+  <!--<sql id="Blob_Column_List" >-->
+    <!--company_address, remarks-->
+  <!--</sql>-->
+  <insert id="insert" parameterType="com.junbin.springcloud.Commom.dto.Company" >
+    insert into co_company (id, name, manager_id, 
+      version, renewal_date, expiration_date, 
+      company_area, business_license_id, legal_representative, 
+      company_phone, mailbox, company_size, 
+      industry, audit_state, state, 
+      balance, create_time, company_address, 
+      remarks)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{managerId,jdbcType=VARCHAR}, 
+      #{version,jdbcType=VARCHAR}, #{renewalDate,jdbcType=TIMESTAMP}, #{expirationDate,jdbcType=TIMESTAMP}, 
+      #{companyArea,jdbcType=VARCHAR}, #{businessLicenseId,jdbcType=VARCHAR}, #{legalRepresentative,jdbcType=VARCHAR}, 
+      #{companyPhone,jdbcType=VARCHAR}, #{mailbox,jdbcType=VARCHAR}, #{companySize,jdbcType=VARCHAR}, 
+      #{industry,jdbcType=VARCHAR}, #{auditState,jdbcType=VARCHAR}, #{state,jdbcType=TINYINT}, 
+      #{balance,jdbcType=DOUBLE}, #{createTime,jdbcType=TIMESTAMP}, #{companyAddress,jdbcType=LONGVARCHAR}, 
+      #{remarks,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.junbin.springcloud.Commom.dto.Company" >
+    insert into co_company
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="managerId != null" >
+        manager_id,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+      <if test="renewalDate != null" >
+        renewal_date,
+      </if>
+      <if test="expirationDate != null" >
+        expiration_date,
+      </if>
+      <if test="companyArea != null" >
+        company_area,
+      </if>
+      <if test="businessLicenseId != null" >
+        business_license_id,
+      </if>
+      <if test="legalRepresentative != null" >
+        legal_representative,
+      </if>
+      <if test="companyPhone != null" >
+        company_phone,
+      </if>
+      <if test="mailbox != null" >
+        mailbox,
+      </if>
+      <if test="companySize != null" >
+        company_size,
+      </if>
+      <if test="industry != null" >
+        industry,
+      </if>
+      <if test="auditState != null" >
+        audit_state,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="balance != null" >
+        balance,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="companyAddress != null" >
+        company_address,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="managerId != null" >
+        #{managerId,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="renewalDate != null" >
+        #{renewalDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expirationDate != null" >
+        #{expirationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyArea != null" >
+        #{companyArea,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicenseId != null" >
+        #{businessLicenseId,jdbcType=VARCHAR},
+      </if>
+      <if test="legalRepresentative != null" >
+        #{legalRepresentative,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPhone != null" >
+        #{companyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="mailbox != null" >
+        #{mailbox,jdbcType=VARCHAR},
+      </if>
+      <if test="companySize != null" >
+        #{companySize,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null" >
+        #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="auditState != null" >
+        #{auditState,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=TINYINT},
+      </if>
+      <if test="balance != null" >
+        #{balance,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyAddress != null" >
+        #{companyAddress,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="findById" parameterType = "String" resultMap="BaseResultMap">
+    select * from co_company where id =#{id}
+  </select>
+  <select id="findByName" parameterType = "String" resultMap="BaseResultMap">
+    select * from co_company where name like concat('%',#{name,jdbcType=VARCHAR},'%')
+  </select>
+
+  <select id="findAll"  resultMap="BaseResultMap">
+    select * from co_company
+  </select>
+  <delete id="deleteById" parameterType = "String" >
+   delete from co_company where id =#{id}
+ </delete>
+
+  <update id="updateSelective" parameterType="com.junbin.springcloud.Commom.dto.Company" >
+    update  co_company
+    <trim prefix="set" suffixOverrides=",">
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="managerId != null" >
+        manager_id = #{managerId,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="renewalDate != null" >
+        renewal_date = #{renewalDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expirationDate != null" >
+        expiration_date =  #{expirationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyArea != null" >
+        company_area = #{companyArea,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicenseId != null" >
+        business_license_id = #{businessLicenseId,jdbcType=VARCHAR},
+      </if>
+      <if test="legalRepresentative != null" >
+        legal_representative = #{legalRepresentative,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPhone != null" >
+        company_phone = #{companyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="mailbox != null" >
+        mailbox = #{mailbox,jdbcType=VARCHAR},
+      </if>
+      <if test="companySize != null" >
+        company_size = #{companySize,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null" >
+        industry = #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="auditState != null" >
+        audit_state = #{auditState,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=TINYINT},
+      </if>
+      <if test="balance != null" >
+        balance = #{balance,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyAddress != null" >
+        company_address = #{companyAddress,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=LONGVARCHAR}
+      </if>
+    </trim>
+    where id = #{id}
+  </update>
+
+</mapper>

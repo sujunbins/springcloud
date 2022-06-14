@@ -1,0 +1,51 @@
+eureka:
+  client:
+    #表示是否将自己注册进Eurekaserver默认为true。
+    register-with-eureka: true
+    #是否从EurekaServer抓取已有的注册信息，默认为true。单节点无所谓，集群必须设置为true才能配合ribbon使用负载均衡
+    fetchRegistry: true
+    service-url:
+      defaultZone: http://sujunbin:sujunbin@eureka7001.com:7001/eureka,http://sujunbin:sujunbin@eureka7002.com:7002/eureka
+  instance:
+    instance-id: payment-8003
+    prefer-ip-address: true
+spring:
+  application:
+    name: cloud-payment-service
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
+    url: jdbc:mysql://192.168.171.143:3306/ihrm?serverTimezone=CTT&useUnicode=true&&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    host: 192.168.171.135
+    port: 6379
+    lettuce:
+      pool:
+        max-active: 8
+    password: 123456
+  rabbitmq:
+    host: 192.168.171.135
+    username: admin
+    password: admin
+    virtual-host: /
+    publisher-confirms: true          #消息发送到转发器确认机制，是都确认回调
+    publisher-returns: true
+    listener:
+      direct:
+        acknowledge-mode: manual     #设置交换机手动签收消息
+        prefetch: 1
+
+
+
+
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapperLocations: classpath:mapper/*.xml
+  type-aliases-package: com.junbin.springcloud.Commom.dto.*  # 所有Entity别名类所在包
+debug: true
+
+server:
+  port: 8003
